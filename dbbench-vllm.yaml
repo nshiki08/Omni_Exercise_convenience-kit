@@ -1,0 +1,24 @@
+# DBBench Task Assignment Configuration
+# Evaluates VLLM agent (Qwen2.5-7B-Instruct) on database query tasks
+
+import: definition.yaml
+
+definition:
+  task:
+    overwrite:
+      parameters:
+        controller_address: "http://localhost:5020/api"
+
+concurrency:
+  task:
+    dbbench-std: 1
+  agent:
+    vllm-model: 1
+
+assignments:
+  - agent:
+      - vllm-model
+    task:
+      - dbbench-std
+
+output: "outputs/dbbench-vllm"

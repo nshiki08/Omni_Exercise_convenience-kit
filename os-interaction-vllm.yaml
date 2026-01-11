@@ -1,0 +1,25 @@
+# OS Interaction Task Assignment Configuration
+# Evaluates VLLM agent (Qwen2.5-7B-Instruct) on OS command-line interaction tasks
+# Requires Docker images: local-os/default, local-os/ubuntu, local-os/packages
+
+import: definition.yaml
+
+definition:
+  task:
+    overwrite:
+      parameters:
+        controller_address: "http://localhost:5020/api"
+
+concurrency:
+  task:
+    os_interaction-std: 1
+  agent:
+    vllm-model: 1
+
+assignments:
+  - agent:
+      - vllm-model
+    task:
+      - os_interaction-std
+
+output: "outputs/os-interaction-vllm"

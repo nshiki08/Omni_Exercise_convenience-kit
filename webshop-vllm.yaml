@@ -1,0 +1,25 @@
+# WebShop Task Assignment Configuration
+# Evaluates VLLM agent (Qwen2.5-7B-Instruct) on WebShop e-commerce tasks
+# Requires full dataset (1.18M products) to be loaded
+
+import: definition.yaml
+
+definition:
+  task:
+    overwrite:
+      parameters:
+        controller_address: "http://localhost:5020/api"
+
+concurrency:
+  task:
+    webshop-std: 1
+  agent:
+    vllm-model: 1
+
+assignments:
+  - agent:
+      - vllm-model
+    task:
+      - webshop-std
+
+output: "outputs/webshop-vllm"
