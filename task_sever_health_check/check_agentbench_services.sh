@@ -11,9 +11,9 @@
 SERVICES=(
     "agentbench-controller.service"
     "agentbench-worker-alfworld.service"
-    "agentbench-worker-webshop.service"
+    #"agentbench-worker-webshop.service"
     "agentbench-worker-dbbench.service"
-    "agentbench-worker-os-interaction.service"
+    #"agentbench-worker-os-interaction.service"
 )
 
 # 引数のチェック
