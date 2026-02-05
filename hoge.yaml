@@ -1,0 +1,17 @@
+# VLLM Agent Configuration for Qwen3-4B
+# This agent connects to the local VLLM server running on port 8000
+
+module: src.client.agents.HTTPAgent
+parameters:
+  url: http://localhost:8000/v1/chat/completions
+  headers:
+    Content-Type: application/json
+  body:
+    model: Qwen/Qwen3-8B
+    temperature: 0
+    max_tokens: 2048
+  prompter:
+    name: role_content_dict
+    args:
+      agent_role: assistant
+  return_format: "{response[choices][0][message][content]}"

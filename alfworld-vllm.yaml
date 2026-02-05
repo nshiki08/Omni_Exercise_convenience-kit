@@ -1,0 +1,24 @@
+# ALFWorld Task Assignment Configuration
+# Evaluates VLLM agent (Qwen2.5-7B-Instruct) on ALFWorld interactive household tasks
+
+import: definition.yaml
+
+definition:
+  task:
+    overwrite:
+      parameters:
+        controller_address: "http://localhost:5020/api"
+
+concurrency:
+  task:
+    alfworld-std: 1
+  agent:
+    vllm-model: 1
+
+assignments:
+  - agent:
+      - vllm-model
+    task:
+      - alfworld-std
+
+output: "outputs/alfworld-vllm"
